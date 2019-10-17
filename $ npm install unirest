@@ -1,0 +1,21 @@
+var unirest = require("unirest");
+
+var req = unirest("GET", "https://google-shopping.p.rapidapi.com/search");
+
+req.query({
+	"language": "EN",
+	"keywords": "IQOS",
+	"country": "US"
+});
+
+req.headers({
+	"x-rapidapi-host": "google-shopping.p.rapidapi.com",
+	"x-rapidapi-key": "8d2da538f2mshb91f59ff51c9fd3p1426e5jsnb15d420af036"
+});
+
+
+req.end(function (res) {
+	if (res.error) throw new Error(res.error);
+
+	console.log(res.body);
+});
